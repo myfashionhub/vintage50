@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'nokogiri', '~> 1.6.2.1'
 gem 'httparty', '~> 0.13.1' 
+gem 'seed_dump'
 gem 'rails_12factor', group: :production
 gem 'font-awesome-sass'
 
