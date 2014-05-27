@@ -1,0 +1,19 @@
+<div class="nav">
+  <h1>
+    <a href="/">Vintage50</a></h1>
+  <h4>The best vintage finds under $50</h4>
+
+  <%= form_tag '/products/filter', method: :post do %>
+  <div class="filter">
+    <%= select_tag :filter, options_for_select(['Dress','top'])
+                            "<option>Dress</option> 
+                             <option>Top</option> 
+                             <option>Skirt</option>  
+                             <option>One piece</option>  
+                             <option>Bottoms</option>  
+                             <option>Jacket</option>".html_safe %>
+    <%= submit_tag 'Filter', name: nil %>
+  </div>  
+  <% end %>
+
+</div>  
