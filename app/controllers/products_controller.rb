@@ -21,11 +21,24 @@ class ProductsController < ApplicationController
     else
       flash[:notice] = 'This brand cannot be added'
     end  
-    redirect_to '/products' 
+    redirect_to root_path 
   end
 
   def filter
     key = params[:filter].downcase 
-    @products = Product.where(category: "#{key}")
-  end  
+    if key == 'all'
+      redirect_to root_path
+    else  
+      @products = Product.where(category: "#{key}")
+    end  
+  end
+
+
+  def search
+    term = params[:search_term].downcase 
+    @products = Product.all.select do |product|
+      product if product.name.downcase.include? term      
+    end  
+  end    
+
 end

@@ -4,9 +4,10 @@ class Product < ActiveRecord::Base
   validates :url, uniqueness: true
 
   def self.add_f21(url)
-    category = self.find(url, 'Category=', '&ProductID') 
     doc    = Nokogiri::HTML(open(url))
     name   = doc.css('h1.product-title')[0].children[0].text
+    category = name.downcase.split(' ').last 
+    category = self.classify(category)       
     price  = doc.css('p.product-price')[0].children[0].text
     image  = doc.css('#productLayer a')[0].attributes['href'].value
     brand = "Forever 21" 

@@ -1,19 +1,28 @@
 <div class="nav">
-  <h1>
-    <a href="/">Vintage50</a></h1>
-  <h4>The best vintage finds under $50</h4>
+  <div class="logo">
+    <h1>
+      <a href="/">Vintage50</a>
+    </h1>
+    <h4>The best vintage finds under $50</h4>
+  </div>
+
+  <%= form_tag '/products/search', method: :get do %>
+  <div class="search">
+    <%= text_field_tag :search_term, nil, placeholder: 'Ex: crop top' %>
+    <%= submit_tag 'Search', name: nil %>
+  </div>  
+  <% end %>  
+
+  <p class='hidden'>&nbsp;</p>  
 
   <%= form_tag '/products/filter', method: :post do %>
   <div class="filter">
-    <%= select_tag :filter, options_for_select(['Dress','top'])
-                            "<option>Dress</option> 
-                             <option>Top</option> 
-                             <option>Skirt</option>  
-                             <option>One piece</option>  
-                             <option>Bottoms</option>  
-                             <option>Jacket</option>".html_safe %>
+    <%= select_tag :filter, options_for_select(['All','Dress','Top',
+      'Skirt', 'One piece', 'Bottoms', 'Jacket'])
+                             %>
     <%= submit_tag 'Filter', name: nil %>
   </div>  
   <% end %>
 
 </div>  
+

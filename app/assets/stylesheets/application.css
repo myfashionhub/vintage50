@@ -48,21 +48,34 @@ h1, h2, h3, h4 {
   color: #555;
 }
 
-.logo a { color: #222; }
-
-.nav form {
-  width: 200px;
-  text-align: right;
-  position: absolute;
-  margin: -46px 0 10px 700px;
+.nav a { color: #222; }
+.logo {
+  width: 300px;
+  float: left;
 }
 
-.nav form:after {
-  clear: both;
+.filter, .search {
+  float: right;
+}
+.search {
+  width: 260px;
+  margin: 30px 0 0 0;  
+}
+.filter {
+  width: 196px;
+  margin: 15px 0 0 0;
+}
+
+p.hidden {
+  height: 60px;
   width: 100%;
-  height: 0;
-  background: transparent;
-  display: block;
+  margin: 0;
+}
+p.hidden:before {
+  clear: both;
+}
+p.hidden:after {
+  clear: both;
 }
 
 
