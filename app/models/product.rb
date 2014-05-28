@@ -86,12 +86,27 @@ class Product < ActiveRecord::Base
     )
   end
 
+  def self.add_nastygal(url)
+    doc      = Nokogiri::HTML(open(url))
+    name     = doc.css('h1.product-name')[0].children[0].text
+    name     = name.gsub('Nasty Gal ', '')
+    category = name.split(' ').last.downcase
+    category = self.classify(category)
+    price = doc.css('.current-price').last.children[0].text
+    image = doc.css('#product-images-carousel')[0].children[1].children[1].attributes['src'].value
+    image    = "http:#{image}"
+    brand    = "Nasty Gal" 
 
-  def self.find(text, term1, term2)
-    index1 = text.index(term1) + term1.length
-    index2 = text.index(term2)
-    result = text.slice(index1, index2 - index1) 
+    self.create(
+      url:      url, 
+      image:    image,
+      category: category, 
+      brand:    brand,      
+      name:     name, 
+      price:    price
+    )
   end
+
 
   def self.classify(category)
     if ['dress'].include? category
@@ -102,7 +117,7 @@ class Product < ActiveRecord::Base
       category = 'one piece'
     elsif ['shorts','pants', 'jeans', 'leggings', 'tights'].include? category
       category = 'bottoms'
-    elsif ['top','shirt', 'tank', 'blouse', 'tee', 'cami'].include? category
+    elsif ['top','shirt', 'tank', 'blouse', 'tee', 'cami', 'bustier'].include? category
       category = 'top' 
     elsif ['jacket','blazer', 'coat'].include? category
       category = 'jacket'       

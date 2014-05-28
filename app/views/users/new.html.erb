@@ -1,0 +1,38 @@
+
+<%= render "nav" %>
+
+
+<div class='form'>
+  <h2>Sign up</h2>
+
+<%= render 'error' %>
+
+
+<%= form_for @user do |f| %>
+<table class='new_form'>
+  <tr>
+    <td><%= f.text_field :username, placeholder: "Screen name" %> </td>
+  </tr>
+
+  <tr>
+    <td><%= f.text_field :email, placeholder: "Email" %></td>
+  </tr>
+
+  <tr>
+    <td><%= f.password_field :password, placeholder: "Password"%></td>
+  </tr>
+
+  <tr>
+    <td><%= f.password_field :password_confirmation, placeholder: "Re-type password" %></td>
+  </tr>
+
+  <tr>
+    <td class='confirm'>
+      <%= f.submit "Create profile" %>
+    </td>
+  </tr>
+</table>  
+<% end %>
+
+</div>  
+

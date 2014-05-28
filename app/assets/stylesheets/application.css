@@ -13,7 +13,7 @@ body {
 .container {
   min-width: 860px;
   max-width: 1100px;
-  width: 90%;
+  width: 95%;
   display: block;
   margin: 0 auto;
 }
@@ -26,6 +26,8 @@ a {
 a:hover {
   color: #333;
 }
+
+
 /* NAV BAR */
 .nav {
   width: 960px;
@@ -48,7 +50,8 @@ h1, h2, h3, h4 {
   color: #555;
 }
 
-.nav a { color: #222; }
+.nav a { color: #444; }
+.nav a:hover { color: #666; }
 .logo {
   width: 300px;
   float: left;

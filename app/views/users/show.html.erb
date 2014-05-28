@@ -1,0 +1,11 @@
+<%= render 'nav' %>
+
+<div class="class">
+  <h3>
+    <%= @user.username %>'s profile
+  </h3>
+  <% if @user.id == session[:user_id] %>
+  <%= link_to 'Edit profile', edit_user_path %>
+  <%= link_to "Log out", sessions_path, method: :delete %>
+  <% end %>
+</div>

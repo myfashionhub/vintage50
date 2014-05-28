@@ -17,9 +17,12 @@ class ProductsController < ApplicationController
     elsif url.include? 'express.com'
       Product.add_express(url)      
     elsif url.include? 'urbanoutfitters'
-      Product.add_urban(url)         
+      Product.add_urban(url)   
+    elsif url.include? 'nastygal'
+      Product.add_nastygal(url)               
     else
       flash[:notice] = 'This brand cannot be added'
+      redirect_to '/products/new' 
     end  
     redirect_to root_path 
   end
@@ -37,7 +40,11 @@ class ProductsController < ApplicationController
   def search
     term = params[:search_term].downcase 
     @products = Product.all.select do |product|
-      product if product.name.downcase.include? term      
+      if product.name.downcase.include? term 
+        product 
+      elsif product.brand.downcase.include? term
+        product  
+      end      
     end  
   end    
 
