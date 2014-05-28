@@ -85,6 +85,9 @@ Product.create!([
   {brand: "Nasty Gal", name: "In Your Element Crop Top", category: "top", price: "$28.00", url: "http://www.nastygal.com/clothes/in-your-element-crop-top", image: "http://images01.nastygal.com/resources/nastygal/images/products/processed/42157.0.detail.jpg"},
   {brand: "Nasty Gal", name: "Liner Up Crop Top", category: "top", price: "$38.00", url: "http://www.nastygal.com/clothes/liner-up-crop-top", image: "http://images01.nastygal.com/resources/nastygal/images/products/processed/43923.0.detail.jpg"}
 ])
-User.create!([
-  {email: "nessa_m00re@yahoo.com", password_digest: "$2a$10$RIZwx5ymALyZjjJH969N1uzyCV7csh.1wXKpkIyc55gBBk9N5b7Aq", username: "myfashionhub", products_id: nil}
-])
+
+Product.dedupe
+
+#User.create!([
+#  {email: "nessa_m00re@yahoo.com", password_digest: "$2a$10$RIZwx5ymALyZjjJH969N1uzyCV7csh.1wXKpkIyc55gBBk9N5b7Aq", username: "myfashionhub", products_id: nil}
+#])

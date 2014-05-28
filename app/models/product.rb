@@ -124,4 +124,12 @@ class Product < ActiveRecord::Base
     end   
   return category                  
   end    
+
+  def self.dedupe
+    grouped = all.select{ |product| product.url }
+    grouped.values.each do |duplicates|
+      first_one = duplicates.shift 
+      duplicates.each{|double| double.destroy} 
+    end
+  end
 end
