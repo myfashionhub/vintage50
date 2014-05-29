@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class Product < ActiveRecord::Base
-  #validates :url, uniqueness: true
+  validates :url, uniqueness: true
 
   def self.add_f21(url)
     doc    = Nokogiri::HTML(open(url))
