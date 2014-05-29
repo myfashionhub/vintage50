@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class Product < ActiveRecord::Base
-  validates :url, uniqueness: true
+  #validates :url, uniqueness: true
 
   def self.add_f21(url)
     doc    = Nokogiri::HTML(open(url))
@@ -49,7 +49,7 @@ class Product < ActiveRecord::Base
     name     = name.downcase.capitalize
     category = name.split(' ').last
     category = self.classify(category)
-        price    = doc.css('#cat-pro-con-detail div strong span span span span')[1].children[0].text
+    price   = doc.css('.glo-tex-normal')[0].children[1].children[1].children.text
     price    = "$#{price}"
     image    = doc.css('#cat-prod-flash')[0].children[1].children[0].content
     image    = image.delete("\n{};,\"=").gsub('var','').gsub('zoomerPageVars','').gsub('serverURL:','').gsub('imageSet: ','').strip
@@ -125,11 +125,4 @@ class Product < ActiveRecord::Base
   return category                  
   end    
 
-  def self.dedupe
-    grouped = all.select{ |product| product.url }
-    grouped.values.each do |duplicates|
-      first_one = duplicates.shift 
-      duplicates.each{|double| double.destroy} 
-    end
-  end
 end
