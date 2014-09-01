@@ -10,19 +10,19 @@
   <div class="search">
     <%= text_field_tag :search_term, nil, placeholder: 'Ex: crop top' %>
     <%= submit_tag 'Search', name: nil %>
-  </div>  
-  <% end %>  
+  </div>
+  <% end %>
 
-  <p class='hidden'>&nbsp;</p>  
+  <p class='hidden'>&nbsp;</p>
 
   <%= form_tag '/products/filter', method: :post do %>
   <div class="filter">
     <%= select_tag :filter, options_for_select(['All','Dress','Top',
-      'Skirt', 'One piece', 'Bottoms', 'Jacket'])
+      'Skirt', 'One piece', 'Bottoms', 'Jacket', 'Accessories'])
                              %>
     <%= submit_tag 'Filter', name: nil %>
-  </div>  
+  </div>
   <% end %>
 
-</div>  
+</div>
 

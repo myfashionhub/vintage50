@@ -1,17 +1,33 @@
+require 'nokogiri'
 require 'open-uri'
-require "#{Rails.root}/lib/product_parser"
 
-class Product < ActiveRecord::Base
-  validates :url, uniqueness: true
-
+module Parser
   def self.crawl_f21(page_url)
-    product_urls = Parser.crawl_f21(page_url)
-    product_urls.map do |product_url|
-      self.find_or_create_by(Parser.f21(product_url))
+    doc = Nokogiri::HTML(open(page_url))
+    product_urls = (0..99).map do |index|
+      index = '0' + index.to_s if index < 10
+      doc.css("#ctl00_MainContent_dlCategoryList_ctl#{index}_dvContainer a")[0].attributes['href'].value
     end
   end
 
-  def self.add_hm(url)
+  def self.f21(url)
+    doc    = Nokogiri::HTML(open(url))
+    name   = doc.css('h1.product-title')[0].children[0].text
+    category = name.downcase.split(' ').last
+    category = self.classify(category)
+    price  = doc.css('p.product-price')[0].children[0].text
+    image  = doc.css('#productLayer a')[0].attributes['href'].value
+    brand = "Forever 21"
+    { url:      url,
+      image:    image,
+      category: category,
+      brand:    brand,
+      name:     name,
+      price:    price
+    }
+  end
+
+  def self.hm(url)
     doc      = Nokogiri::HTML(open(url))
     name     = doc.css('#product h1')[0].children[0].content
     name     = name.gsub("\r\n", "").strip
@@ -21,18 +37,9 @@ class Product < ActiveRecord::Base
     image    = doc.css('#product-image')[0].attributes['src'].value
     image    = "http:#{image}"
     brand    = "H&M"
-
-    self.create(
-      url:      url,
-      image:    image,
-      category: category,
-      brand:    brand,
-      name:     name,
-      price:    price
-    )
   end
 
-  def self.add_express(url)
+  def self.express(url)
     doc      = Nokogiri::HTML(open(url))
     name     = doc.css('#cat-pro-con-detail h1')[0].children[0].content
     name     = name.downcase.capitalize
@@ -43,18 +50,9 @@ class Product < ActiveRecord::Base
     image    = doc.css('#cat-prod-flash')[0].children[1].children[0].content
     image    = image.delete("\n{};,\"=").gsub('var','').gsub('zoomerPageVars','').gsub('serverURL:','').gsub('imageSet: ','').strip
     brand    = "Express"
-
-    self.create(
-      url:      url,
-      image:    image,
-      category: category,
-      brand:    brand,
-      name:     name,
-      price:    price
-    )
   end
 
-  def self.add_urban(url)
+  def self.urban(url)
     doc      = Nokogiri::HTML(open(url))
     name     = name = doc.css('h2#prodTitle')[0].children.text
     category = name.downcase.split(' ').last
@@ -64,18 +62,9 @@ class Product < ActiveRecord::Base
     image = doc.css('img#prodMainImg')[0].attributes['src'].value
     image    = "http:#{image}"
     brand    = "Urban Outfitters"
-
-    self.create(
-      url:      url,
-      image:    image,
-      category: category,
-      brand:    brand,
-      name:     name,
-      price:    price
-    )
   end
 
-  def self.add_nastygal(url)
+  def self.nastygal(url)
     doc      = Nokogiri::HTML(open(url))
     name     = doc.css('h1.product-name')[0].children[0].text
     name     = name.gsub('Nasty Gal ', '')
@@ -85,17 +74,7 @@ class Product < ActiveRecord::Base
     image = doc.css('#product-images-carousel')[0].children[1].children[1].attributes['src'].value
     image    = "http:#{image}"
     brand    = "Nasty Gal"
-
-    self.create(
-      url:      url,
-      image:    image,
-      category: category,
-      brand:    brand,
-      name:     name,
-      price:    price
-    )
   end
-
 
   def self.classify(category)
     if ['dress'].include? category
@@ -106,12 +85,17 @@ class Product < ActiveRecord::Base
       category = 'one piece'
     elsif ['shorts','pants', 'jeans', 'leggings', 'tights'].include? category
       category = 'bottoms'
-    elsif ['top','shirt', 'tank', 'blouse', 'tee', 'cami', 'bustier'].include? category
+    elsif ['top','shirt', 'tank', 'blouse', 'tee', 'cami', 'bustier', 'sweatshirt'].include? category
       category = 'top'
     elsif ['jacket','blazer', 'coat'].include? category
       category = 'jacket'
+    elsif ['bikini', 'bra', 'boyshort'].include? category
+      category = 'intimates'
+    else
+      category = 'accessories'
     end
   return category
   end
-
 end
+
+

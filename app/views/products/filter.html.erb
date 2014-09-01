@@ -3,7 +3,7 @@
 <div class="container">
 
   <ul class='all_products'>
-  <% @products.order('created_at DESC').each do |product| %> 
+  <% @products.order('created_at DESC').each do |product| %>
 
       <li>
         <img src="<%= product.image %>" />
@@ -12,10 +12,10 @@
         </a> | <%= product.price %>
         <% if product.price.delete('$').to_i < 15 %>
           <div class="steal">&nbsp; STEAL!</div>
-        <% end %> 
-      </li> 
+        <% end %>
+      </li>
 
-  <% end %>  
+  <% end %>
   </ul>
 
 

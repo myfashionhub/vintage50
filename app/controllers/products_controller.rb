@@ -15,37 +15,37 @@ class ProductsController < ApplicationController
     elsif url.include? 'hm.com'
       Product.add_hm(url)
     elsif url.include? 'express.com'
-      Product.add_express(url)      
+      Product.add_express(url)
     elsif url.include? 'urbanoutfitters'
-      Product.add_urban(url)   
+      Product.add_urban(url)
     elsif url.include? 'nastygal'
-      Product.add_nastygal(url)               
+      Product.add_nastygal(url)
     else
       flash[:notice] = 'This brand cannot be added'
-      redirect_to '/products/new' 
-    end  
-    redirect_to root_path 
+      redirect_to '/products/new'
+    end
+    redirect_to root_path
   end
 
   def filter
-    key = params[:filter].downcase 
-    if key == 'all'
+    keyword = params[:filter].downcase
+    if keyword == 'all'
       redirect_to root_path
-    else  
-      @products = Product.where(category: "#{key}")
-    end  
+    else
+      @products = Product.where(category: "#{keyword}")
+    end
   end
 
 
   def search
-    term = params[:search_term].downcase 
+    term = params[:search_term].downcase
     @products = Product.all.select do |product|
-      if product.name.downcase.include? term 
-        product 
+      if product.name.downcase.include? term
+        product
       elsif product.brand.downcase.include? term
-        product  
-      end      
-    end  
-  end    
+        product
+      end
+    end
+  end
 
 end
