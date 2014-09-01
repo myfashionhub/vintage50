@@ -18,7 +18,7 @@
   <%= form_tag '/products/filter', method: :post do %>
   <div class="filter">
     <%= select_tag :filter, options_for_select(['All','Dress','Top',
-      'Skirt', 'One piece', 'Bottoms', 'Jacket', 'Accessories'])
+      'Skirt', 'One piece', 'Bottoms', 'Jacket', 'Intimates', 'Accessories'])
                              %>
     <%= submit_tag 'Filter', name: nil %>
   </div>

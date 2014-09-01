@@ -39,13 +39,7 @@ class ProductsController < ApplicationController
 
   def search
     term = params[:search_term].downcase
-    @products = Product.all.select do |product|
-      if product.name.downcase.include? term
-        product
-      elsif product.brand.downcase.include? term
-        product
-      end
-    end
+    @products = Product.search(term)
   end
 
 end

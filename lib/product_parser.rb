@@ -64,6 +64,15 @@ module Parser
     brand    = "Urban Outfitters"
   end
 
+  def self.crawl_nastygal(page_url)
+      doc = Nokogiri::HTML(open(page_url))
+      product_urls = (0..19).map do |j|
+        puts doc.css('.product-link')[j].attributes['href'].value
+        doc.css('.product-link')[j].attributes['href'].value
+      end
+
+  end
+
   def self.nastygal(url)
     doc      = Nokogiri::HTML(open(url))
     name     = doc.css('h1.product-name')[0].children[0].text
@@ -74,6 +83,17 @@ module Parser
     image = doc.css('#product-images-carousel')[0].children[1].children[1].attributes['src'].value
     image    = "http:#{image}"
     brand    = "Nasty Gal"
+    if price.gsub('$','').to_i < 50
+      { url:      url,
+        image:    image,
+        category: category,
+        brand:    brand,
+        name:     name,
+        price:    price
+      }
+    else
+      nil
+    end
   end
 
   def self.classify(category)
@@ -89,7 +109,7 @@ module Parser
       category = 'top'
     elsif ['jacket','blazer', 'coat'].include? category
       category = 'jacket'
-    elsif ['bikini', 'bra', 'boyshort'].include? category
+    elsif ['bikini', 'bra', 'bralette', 'boyshort'].include? category
       category = 'intimates'
     else
       category = 'accessories'

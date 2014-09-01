@@ -3,7 +3,10 @@
 <div class="container">
 
   <ul class='all_products'>
-  <% @products.each do |product| %> 
+  <% if @products.length == 0 %>
+    <p>No product found.</p>
+  <% else %>
+  <% @products.each do |product| %>
 
       <li>
         <img src="<%= product.image %>" />
@@ -12,10 +15,11 @@
         </a> | <%= product.price %>
         <% if product.price.delete('$').to_i < 15 %>
           <div class="steal">&nbsp; STEAL!</div>
-        <% end %> 
-      </li> 
+        <% end %>
+      </li>
 
-  <% end %>  
+  <% end %>
+  <% end %>
   </ul>
 
 
