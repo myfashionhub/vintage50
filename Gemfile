@@ -20,12 +20,15 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
-gem 'nokogiri', '~> 1.6.2.1'
-gem 'httparty', '~> 0.13.1'
 gem 'seed_dump'
 gem 'rails_12factor', group: :production
+
+gem 'nokogiri', '~> 1.6.2.1'
+gem 'httparty', '~> 0.13.1'
+
 gem 'font-awesome-sass'
 gem 'bower-rails'
 gem 'angular-rails-templates'
+
 
 
