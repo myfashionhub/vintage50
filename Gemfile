@@ -25,6 +25,7 @@ gem 'rails_12factor', group: :production
 
 gem 'nokogiri', '~> 1.6.2.1'
 gem 'httparty', '~> 0.13.1'
+gem 'will_paginate', '~> 3.0.6'
 
 gem 'font-awesome-sass'
 gem 'bower-rails'
