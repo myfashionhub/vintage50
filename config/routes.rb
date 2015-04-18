@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  root 'products#index'
-  get 'products/new'    => 'products#new'
-  post 'products/new'   => 'products#create'
-  post 'products/filter'=> 'products#filter' 
+  root 'sessions#index'
+
+  resources :products, only: [:index, :new, :create]
+  post 'products/filter'=> 'products#filter'
   get 'products/search' => 'products#search'
 
-  get 'sessions'        => 'sessions#index', as: 'login' 
+  get 'sessions'        => 'sessions#index', as: 'login'
   post 'sessions'       => 'sessions#create'
-  delete 'sessions'     => 'sessions#destroy', as: 'logout' 
+  delete 'sessions'     => 'sessions#destroy', as: 'logout'
 
   resources :users
-  
-  get 'about'           => 'about#index'
+
+  resources :about, only: [:index]
 end
 
 # users GET    /users(.:format)           users#index

@@ -1,9 +1,9 @@
-<%= form_tag '/products/new', method: :post do %>
+<%= form_tag '/products', method: :post do %>
   <%= text_field_tag :url, nil, placeholder: 'Paste product URL here' %>
   <%= submit_tag 'Add product', name: nil %>
 <% end %>
 
 <%#
-http://www.revolveclothing.com/clothing-dresses/br/426fab/?&navsrc=subclothing#/filter/true 
+http://www.revolveclothing.com/clothing-dresses/br/426fab/?&navsrc=subclothing#/filter/true
 
 %>
