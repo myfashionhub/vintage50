@@ -4,3 +4,18 @@
 	color: $color;
 	&:hover { color: $color-hover; }
 }
+
+@mixin background-color($color, $color-hover) {
+	background: $color;
+	&:hover { 
+		background: $color-hover;
+	}
+}
+
+@mixin position($position,$top,$right,$bottom,$left) {
+	position: $position;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}

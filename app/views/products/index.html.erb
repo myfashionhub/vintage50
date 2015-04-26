@@ -7,9 +7,7 @@
 </div>
 
 <div class="container">
-  <div class="pagination">
-    <%= will_paginate @products %>
-  </div>
+  <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
 
   <ul class='all_products'>
   <% @products.order('created_at DESC').each do |product| %>
@@ -17,5 +15,6 @@
   <% end %>
   </ul>
 
+  <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
 
 </div>

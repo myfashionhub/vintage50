@@ -1,10 +1,14 @@
-<li> 
+<li class='product'> 
   <img src="<%= product.image %>" />
   <a href="<%= product.url %>" target='_blank'>
   <%= product.brand %> <%= product.name %>
   </a> | <%= product.price %>
-  
+
   <% if product.price.delete('$').to_i < 15 %>
     <div class="steal">&nbsp; STEAL!</div>
   <% end %>
+
+  <div class='add'>
+    <span class='tooltip'>Add to closet</span>&nbsp; + 
+  </div>
 </li>

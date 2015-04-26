@@ -32,15 +32,14 @@ nav.products {
   .filter, .search {
     float: right;
   }
-}
-
-.search {
-  width: 260px;
-  margin: 30px 0 0 0;  
-}
-.filter {
-  width: 196px;
-  margin: 15px 0 0 0;
+  .search {
+    width: 260px;
+    margin: 30px 0 0 0;  
+  }
+  .filter {
+    width: 196px;
+    margin: 15px 0 0 0;
+  }
 }
 
 p.hidden {
@@ -54,3 +53,19 @@ p.hidden:before {
 p.hidden:after {
   clear: both;
 }
+
+.pagination {
+  width: 100%;
+  text-align: right;
+  font-size: 16px;
+  .previous_page, .next_page {
+    font-size: 1.2em;
+  }
+}
+
+
+
+
+
+
+
