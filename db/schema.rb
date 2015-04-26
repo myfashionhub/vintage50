@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527140725) do
+ActiveRecord::Schema.define(version: 20150426224910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "closet_contents", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "closet_contents", ["user_id"], name: "index_closet_contents_on_user_id", using: :btree
+
+  create_table "product_clicks", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.string   "product_field"
+    t.string   "page_position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "product_clicks", ["user_id"], name: "index_product_clicks_on_user_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "brand"
@@ -25,6 +45,8 @@ ActiveRecord::Schema.define(version: 20140527140725) do
     t.datetime "updated_at"
     t.string   "url"
     t.text     "image"
+    t.string   "keywords"
+    t.integer  "popularity"
   end
 
   create_table "users", force: true do |t|
