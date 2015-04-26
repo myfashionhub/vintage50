@@ -1,0 +1,35 @@
+@import 'mixins';
+
+body, html {
+	font-size: 14px;
+	font-family: 'Helvetica', sans-serif;
+	margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+  &:hover { color: #333; };
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Quicksand';
+} 
+
+input {
+	font-size: 14px;
+}
+
+input[type='submit'],
+button, select, option {
+	font-size: 2em;
+}
+
+.flash {
+  width: 200px;
+  margin: 0 0 0 40%;
+  display: block;
+  font-style: italic;
+  position: absolute;
+  z-index: 1;
+}

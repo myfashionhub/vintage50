@@ -1,0 +1,27 @@
+@import 'mixins';
+
+/* PRODUCT INDEX */
+.all_products {
+  padding: 0;
+}
+
+.all_products li {
+  display: inline-block;
+  width: 190px;
+  vertical-align: top;
+  margin: 0 0 0 20px;
+}
+
+.all_products img {
+  display: block;
+  height: 200px;
+  margin: 10px auto;
+}
+
+.steal {
+  display: inline;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 14px;  
+  color: #FF4500;
+}
