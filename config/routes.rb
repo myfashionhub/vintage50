@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
-  root 'sessions#index'
+  root 'products#index'
 
   resources :products, only: [:index, :new, :create]
   post 'products/filter'=> 'products#filter'
   get 'products/search' => 'products#search'
 
+  resources :closet_contents, only: [:index, :create, :destroy]
+
   get 'sessions'        => 'sessions#index', as: 'login'
   post 'sessions'       => 'sessions#create'
   delete 'sessions'     => 'sessions#destroy', as: 'logout'
 
-  resources :users
+  resources :users, except: [:show]
+  get '/account' => 'users#show'
 
   resources :about, only: [:index]
 end
