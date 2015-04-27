@@ -1,0 +1,15 @@
+<div class="container">
+<% if !@products.empty? %>
+  <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
+
+  <ul class='my-products'>
+  <% @products.order('created_at DESC').each do |product| %>
+    <%= render partial: 'show', locals: { product: product } %>
+  <% end %>
+  </ul>
+
+  <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
+<% else %>
+  <p>Your closet is empty! <a href="/products">Add some items.</a></p>
+<% end %>
+</div>

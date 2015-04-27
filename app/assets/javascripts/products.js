@@ -13,7 +13,7 @@ var Product = function(id) {
 
 	this.addToCloset = function() {
 		$.ajax({
-			url: '/products/add',
+			url: '/closet',
 			type: 'POST',
 			data: { product_id: that.id },
 			success: function(data) {

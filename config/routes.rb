@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   post 'products/filter'=> 'products#filter'
   get 'products/search' => 'products#search'
 
-  resources :closet_contents, only: [:index, :create, :destroy]
+  get '/closet' => 'closet_contents#index'
+  post '/closet' => 'closet_contents#create'
+  delete '/closet' => 'closet_contents#destroy'
 
   get 'sessions'        => 'sessions#index', as: 'login'
   post 'sessions'       => 'sessions#create'
