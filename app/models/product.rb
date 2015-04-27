@@ -27,7 +27,6 @@ class Product < ActiveRecord::Base
     end
   end
 
-
   def self.search(term)
     Product.all.select do |product|
       product.name.downcase.include?(term) || product.brand.downcase.include?(term) || product.category.include?(term)

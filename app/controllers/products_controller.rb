@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
   end
 
   def new
-
   end
 
   def create
@@ -35,7 +34,6 @@ class ProductsController < ApplicationController
       @products = Product.where(category: "#{keyword}")
     end
   end
-
 
   def search
     term = params[:search_term].downcase

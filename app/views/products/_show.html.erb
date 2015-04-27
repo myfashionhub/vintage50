@@ -1,14 +1,16 @@
 <li class='product'> 
   <img src="<%= product.image %>" />
   <a href="<%= product.url %>" target='_blank'>
-  <%= product.brand %> <%= product.name %>
+    <%= product.brand %> <%= product.name %>
   </a> | <%= product.price %>
 
   <% if product.price.delete('$').to_i < 15 %>
     <div class="steal">&nbsp; STEAL!</div>
   <% end %>
 
+  <input type='hidden' class="meta" data-id='<%= product.id %>' />
+
   <div class='add'>
-    <span class='tooltip'>Add to closet</span>&nbsp; + 
+    <span class='tooltip'>Add to closet&nbsp;</span> + 
   </div>
 </li>
