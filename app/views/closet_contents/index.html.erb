@@ -3,8 +3,8 @@
   <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
 
   <ul class='my-products'>
-  <% @products.order('created_at DESC').each do |product| %>
-    <%= render partial: 'show', locals: { product: product } %>
+  <% @products.each do |product| %>
+    <%= render partial: 'product', locals: { product: product } %>
   <% end %>
   </ul>
 

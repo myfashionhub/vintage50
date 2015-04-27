@@ -10,7 +10,7 @@
   <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
 
   <ul class='all_products'>
-  <% @products.order('created_at DESC').each do |product| %>
+  <% @products.each do |product| %>
     <%= render partial: 'show', locals: { product: product } %>
   <% end %>
   </ul>

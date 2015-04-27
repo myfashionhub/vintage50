@@ -1,0 +1,12 @@
+<li class='product'> 
+  <img src="<%= product.image %>" />
+  <a href="<%= product.url %>" target='_blank'>
+    <%= product.brand %> <%= product.name %>
+  </a> | <%= product.price %>
+
+  <input type='hidden' class="meta" data-id='<%= product.id %>' />
+
+  <div class='remove'>
+    <span class='tooltip'>Remove from closet&nbsp;</span> x 
+  </div>
+</li>

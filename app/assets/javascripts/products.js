@@ -4,6 +4,14 @@ $(document).ready(function() {
   	var product = new Product(product_id);
   	product.addToCloset();
   });
+
+  $('.product .remove').click(function(e) { 
+    var item = $(e.target).parent();
+    item.remove(); 
+  	var product_id = item.find('.meta').attr('data-id');
+  	var product = new Product(product_id);
+  	product.removeFromCloset();
+  });
 });
 
 
@@ -17,7 +25,7 @@ var Product = function(id) {
 			type: 'POST',
 			data: { product_id: that.id },
 			success: function(data) {
-				console.log(data, 'Product added to your closet.');
+				console.log(data);
 			},
 			error: function(data) {
 				console.log(data);
@@ -25,13 +33,13 @@ var Product = function(id) {
 		});
 	};
 
-	this.removeFromClose = function() {
+	this.removeFromCloset = function() {
 		$.ajax({
-			url: '/products/remove',
-			type: 'POST',
+			url: '/closet',
+			type: 'DELETE',
 			data: { product_id: that.id },
 			success: function(data) {
-				console.log(data, 'Product removed from your closet.');
+				console.log(data);
 			},
 			error: function(data) {
 				console.log(data);
