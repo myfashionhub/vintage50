@@ -1,11 +1,4 @@
 <nav class='products'>
-  <div class="logo">
-    <h1>
-      <a href="/">Vintage50</a>
-    </h1>
-    <h4>The best vintage finds under $50</h4>
-  </div>
-
   <%= form_tag '/products/search', method: :get do %>
   <div class="search">
     <%= text_field_tag :search_term, nil, placeholder: 'Ex: crop top' %>

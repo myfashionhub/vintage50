@@ -1,10 +1,7 @@
-<%= render "nav" %>
-
-
 <div class='form'>
   <h2>Edit profile</h2>
 
-<%= form_for @current_user do |f| %>
+<%= form_for @user do |f| %>
 <table class='edit_form'>
   <tr>
     <td><%= f.text_field :username, placeholder: "Screen name" %> </td>

@@ -19,10 +19,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @current_user = User.find(session[:user_id])
-  end
-
   def update
     @current_user = User.find(session[:user_id])
     @current_user.update(user_params)
@@ -30,9 +26,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if current_user
+      @user = current_user
+    else
+      redirect_to root_path
+    end
   end
-
 
   def destroy
     User.delete(current_user.id)
