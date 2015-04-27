@@ -1,20 +1,18 @@
 <nav class='products'>
-  <%= form_tag '/products/search', method: :get do %>
-  <div class="search">
+  <%= form_tag '/products/search', method: :get, class: 'search' do %>
     <%= text_field_tag :search_term, nil, placeholder: 'Ex: crop top' %>
     <%= submit_tag 'Search', name: nil %>
-  </div>
   <% end %>
 
   <p class='hidden'>&nbsp;</p>
 
-  <%= form_tag '/products/filter', method: :post do %>
-  <div class="filter">
-    <%= select_tag :filter, options_for_select(['All','Dress','Top',
-      'Skirt', 'One piece', 'Bottoms', 'Jacket', 'Intimates', 'Accessories'])
-                             %>
+  <%= form_tag '/products/filter', method: :post, class: 'filter' do %>
+    <%= select_tag :filter, options_for_select([
+      'All','Dress','Top',
+      'Skirt', 'One piece', 'Bottoms', 
+      'Jacket', 'Intimates', 'Accessories'])
+    %>
     <%= submit_tag 'Filter', name: nil %>
-  </div>
   <% end %>
 
 </nav>
