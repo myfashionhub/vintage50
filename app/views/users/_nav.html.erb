@@ -1,36 +1,18 @@
-<div class="nav">
-
-  <div class="logo">
-    <h1>
-      <a href="/">Vintage50</a>
-    </h1>
-    <h4>The best vintage finds under $50</h4>
-  </div>
-
-  <ul class="user_nav">
+<ul class='users-nav'>
   <% if current_user %>
-    <li>
-      <%= link_to "Account", user_path(current_user), method: :get %>
-    </li>
-    <li>
-      <%= link_to "Home", products_path, method: :get %>
-    </li>
-    <li>
-      <%= link_to "About", '/about', method: :get %>
-    </li>
-
+  <li>
+    <a href="/closet">My closet</a>
+  </li>
+  <li>
+    <a href="/account"><i class="fa fa-cog"></i></a>
+  </li>
   <% else %>
-    <li>
-      <%= link_to "Log in/Sign up", login_path, method: :get %>
-    </li>
-    <li>
-      <%= link_to "Home", root_path, method: :get %>
-    </li>
-    <li>
-      <%= link_to "About", '/about', method: :get %>
-    </li>
+  <li>
+    <%= link_to "Log in/Sign up", login_path %>
+  </li>
   <% end %>
-  </ul>
 
-</div>
-
+  <li>
+    <%= link_to "About", '/about' %>
+  </li>  
+</ul>

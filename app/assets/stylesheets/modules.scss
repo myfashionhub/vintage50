@@ -1,7 +1,7 @@
 @import 'mixins';
 
 /* NAV BAR */
-nav.products {
+nav.global {
   width: 960px;
   margin: 0 auto;
   overflow: hidden;
@@ -10,7 +10,7 @@ nav.products {
     font-size: 45px;
     text-transform: uppercase;
     font-weight: normal;
-    margin-bottom: 0;
+    margin: 10px 0 0 0;
   }
 
   h4 {
@@ -28,6 +28,7 @@ nav.products {
   }
 }
 
+/* PRODUCT NAV */
 nav.products { 
   .filter, .search {
     float: right;
@@ -53,6 +54,20 @@ p.hidden:before {
 p.hidden:after {
   clear: both;
 }
+
+/* USER NAV */
+.users-nav {
+  list-style: none;
+  margin: 15px 3em 0 0;
+  padding: 0;
+  float: right;
+
+  li {
+    display: inline-block;
+    margin-right: .8em;
+  }
+}
+
 
 .pagination {
   width: 100%;
