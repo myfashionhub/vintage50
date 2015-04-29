@@ -41,4 +41,9 @@ class ProductsController < ApplicationController
     @products = Product.search(term)
   end
 
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    render json: { msg: "#{product.name} removed from inventory" }
+  end
 end

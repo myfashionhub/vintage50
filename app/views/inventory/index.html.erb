@@ -16,8 +16,8 @@
 <script type="text/javascript">
   $('.product .actions').on('change', function(e) {  
   	var product_id = $(e.target).parent().find('.meta').attr('data-id'),
-  	    action = $(e.target).parent().html();
-  	var product = new Product(product_id);
-  	product.changeStatus(action);
+  	    action = e.target.value;
+  	var item = new Item(product_id, $(e.target).parent()); 
+  	item.changeStatus(action);
   });	
 </script>
