@@ -1,6 +1,5 @@
-class SessionsController < ApplicationController 
-  before_action :authorize, only: [:edit]
-
+class SessionsController < ApplicationController
+  
   def index
   end
 
@@ -14,7 +13,6 @@ class SessionsController < ApplicationController
       redirect_to login_path, alert: "Log in failed"
     end  
   end
-
 
   def destroy
     session[:user_id] = nil

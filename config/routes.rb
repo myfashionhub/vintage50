@@ -4,19 +4,21 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :create]
   post 'products/filter'=> 'products#filter'
   get 'products/search' => 'products#search'
+  
+  get '/inventory' => 'inventory#index'
 
   get '/closet' => 'closet_contents#index'
   post '/closet' => 'closet_contents#create'
   delete '/closet' => 'closet_contents#destroy'
 
-  get 'sessions'        => 'sessions#index', as: 'login'
-  post 'sessions'       => 'sessions#create'
-  delete 'sessions'     => 'sessions#destroy', as: 'logout'
-
   resources :users, except: [:show]
   get '/account' => 'users#show'
 
-  resources :about, only: [:index]
+  resources :sessions, only: [:create]
+  get '/logout'     => 'sessions#destroy'
+
+  get '/about' => 'welcome#about'
+  get '/login' => 'welcome#login'
 end
 
 # users GET    /users(.:format)           users#index

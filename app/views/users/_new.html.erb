@@ -1,14 +1,9 @@
-
-<%= render "nav" %>
-
-
 <div class='form'>
   <h2>Sign up</h2>
 
-<%= render 'error' %>
-
-
 <%= form_for @user do |f| %>
+  <div class="error"></div>
+  
 <table class='new_form'>
   <tr>
     <td><%= f.text_field :username, placeholder: "Screen name" %> </td>
