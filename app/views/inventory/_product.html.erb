@@ -1,0 +1,23 @@
+<li class='product'>
+
+  <img src="<%= product.image %>" />
+  <a href="<%= product.url %>" target='_blank'>
+    <%= product.brand %> <%= product.name %>
+  </a> | <%= product.price %>
+
+  <% if product.price.delete('$').to_i < 15 %>
+    <div class="steal">&nbsp; STEAL!</div>
+  <% end %>
+
+  <input type='hidden' class="meta" data-id='<%= product.id %>' />
+
+  <p>Category: <%= product.category %></p>
+  <p>Status: <%= product.status || 'unknown' %></p>
+
+  <select class='actions'>
+    <% for action in @actions %>
+    <option><%= action %></option>
+    <% end %>
+  </select>
+
+</li>

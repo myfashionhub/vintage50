@@ -60,7 +60,7 @@ li.product {
     padding: 2px 5px 3px 5px;
     color: #fff;
     display: none;
-    @include background-color(#444,#666);
+    background-color: #444;
     @include position(absolute,5px,5px,auto,auto);
     z-index: 1;
     cursor: pointer;

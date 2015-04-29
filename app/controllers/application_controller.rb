@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception  
   helper_method :current_user
 
   def current_user
@@ -6,8 +7,9 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize  
-    redirect_to login_path if current_user.nil? 
+    if current_user.role != 'admin' 
+      render :text => 'You do not have permission to access this page. Return <a href='/'>home</a>'
+ 		end 
   end
 
-  protect_from_forgery with: :exception
 end

@@ -1,0 +1,23 @@
+<%= render 'products/nav' %>
+
+<div class="container">
+  <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
+
+  <ul class='all_products'>
+  <% @products.each do |product| %>
+    <%= render partial: 'product', locals: { product: product } %>
+  <% end %>
+  </ul>
+
+  <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
+
+</div>
+
+<script type="text/javascript">
+  $('.product .actions').on('change', function(e) {  
+  	var product_id = $(e.target).parent().find('.meta').attr('data-id'),
+  	    action = $(e.target).parent().html();
+  	var product = new Product(product_id);
+  	product.changeStatus(action);
+  });	
+</script>
