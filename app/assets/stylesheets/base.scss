@@ -20,10 +20,11 @@ input {
 	font-size: 14px;
 }
 
-input[type='submit'],
-button, select, option {
+input[type='submit'], select, option {
 	font-size: 2em;
 }
+
+button { font-size: 1em; }
 
 .tooltip {
   display: none;

@@ -51,9 +51,38 @@ nav.global {
   }
 }
 
+/* BULK EDIT */
+.bulk-edit {
+  float: right;
+  margin: -1.5em 3em 0 0;
+}
 
 
+/* MODAL & GLOBAL OVERLAY */
+.global-overlay {
+  @include position(fixed,0,auto,auto,0);
+  @include dimension(100%,100%);
+  z-index: 3;
+  background-color: rbga(255,255,255,.7);
+}
 
+.modal {
+  @include vertical-align;
+  @include horizontal-align;
+  @include dimension(400px,300px);
+  position: absolute;
+  z-index: 4;
+  background-color: #fff;
+  border: 1px solid #eee;
+  .close {
+    font-size: 2em;
+    @include position(absolute,0,0,auto,auto);
+  }
+}
 
-
-
+.global-overlay, .modal {
+  display: none;
+  &.active {
+    display: block;
+  }  
+}
