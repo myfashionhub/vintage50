@@ -23,7 +23,8 @@ module Parser
       category: category,
       brand:    brand,
       name:     name,
-      price:    price
+      price:    price,
+      status: 'pending'
     }
   end
 
