@@ -1,0 +1,10 @@
+<div class="bulk-edit">
+  <button class='select-all'>Select all</button>
+  <button class='deselect-all'>Deselect all</button>
+
+  <select class='bulk-actions'>
+    <% for action in @actions %>
+    <option><%= action %></option>
+    <% end %>
+  </select>	
+</div>
