@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.paginate(page: params[:page] || 1, per_page: 50)
-                       .order('created_at DESC')
+    @products = Product.where(status: 'published')
+                .paginate(page: params[:page] || 1, per_page: 50)
+                .order('created_at DESC')
   end
 
   def new
