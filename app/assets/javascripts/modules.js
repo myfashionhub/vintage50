@@ -8,6 +8,10 @@ var Modal = function(selector) {
 		this.closeButton.click(function() {
 			that.close();
 		});
+
+		$('.global-overlay').click(function() {
+			that.close();
+		});
 	};
 
 	this.open = function() {

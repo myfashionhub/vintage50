@@ -53,7 +53,7 @@ var Product = function(element) {
 
 	this.enlargedView = function() {
 		var modal = new Modal('.modal');
-		this.element.clone().appendTo(modal.content);
+		modal.content.html(that.element.clone());
 		modal.open();
 	};
 }
