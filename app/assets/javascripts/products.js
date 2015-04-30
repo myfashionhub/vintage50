@@ -1,22 +1,26 @@
 $(document).ready(function() {
   $('.product .add').click(function(e) {  
-  	var product_id = $(e.target).parent().find('.meta').attr('data-id');
-  	var product = new Product(product_id);
+  	var product = new Product($(e.target).parent());
   	product.addToCloset();
   });
 
   $('.product .remove').click(function(e) { 
     var item = $(e.target).parent();
-    item.remove(); 
-  	var product_id = item.find('.meta').attr('data-id');
-  	var product = new Product(product_id);
+  	var product = new Product(item);
   	product.removeFromCloset();
+  	item.remove();
+  });
+
+  $('.product img').click(function(e) {
+  	var product = new Product($(e.target).parent());
+  	product.enlargedView();
   });
 });
 
 
-var Product = function(id) {
-	this.id = id;
+var Product = function(element) {
+	this.element = element;
+	this.id = this.element.find('.meta').attr('data-id');
 	var that = this;
 
 	this.addToCloset = function() {
@@ -45,5 +49,11 @@ var Product = function(id) {
 				console.log(data);
 			}
 		});		
-	}
+	};
+
+	this.enlargedView = function() {
+		var modal = new Modal('.modal');
+		this.element.clone().appendTo(modal.content);
+		modal.open();
+	};
 }

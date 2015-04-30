@@ -1,6 +1,8 @@
 <li class='product'>
 
-  <img src="<%= product.image %>" />
+  <img src="<%= product.image %>" title='Click to view details' />
+  <input type='checkbox' class='checkbox' />
+
   <a href="<%= product.url %>" target='_blank'>
     <%= product.brand %> <%= product.name %>
   </a> | <%= product.price %>
