@@ -5,7 +5,9 @@ var Modal = function(selector) {
 	this.content = this.element.find('.content');
 
 	this.init = function() {
-		this.closeButton.click(that.close);
+		this.closeButton.click(function() {
+			that.close();
+		});
 	};
 
 	this.open = function() {
@@ -13,7 +15,7 @@ var Modal = function(selector) {
 		$('.global-overlay').addClass('active');
 	};
 
-	this.close = function() {
+	this.close = function() { 
 		this.element.removeClass('active');
 		$('.global-overlay').removeClass('active');
 	};

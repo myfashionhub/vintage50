@@ -63,7 +63,7 @@ nav.global {
   @include position(fixed,0,auto,auto,0);
   @include dimension(100%,100%);
   z-index: 3;
-  background-color: rbga(255,255,255,.7);
+  background-color: rgba(255,255,255,.7);
 }
 
 .modal {
@@ -75,8 +75,9 @@ nav.global {
   background-color: #fff;
   border: 1px solid #eee;
   .close {
-    font-size: 2em;
-    @include position(absolute,0,0,auto,auto);
+    font-size: 1.5em;
+    @include position(absolute,0,5px,auto,auto);
+    cursor: pointer;
   }
 }
 

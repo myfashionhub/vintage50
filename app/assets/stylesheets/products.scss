@@ -71,6 +71,8 @@ li.product {
       }
     }
   }
+
+  img { cursor: pointer; }
   &:hover {
     .add, .remove {
       display: block;
