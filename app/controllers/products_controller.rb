@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
     @products = Product.where(status: 'published')
                 .paginate(page: params[:page] || 1, per_page: 50)
                 .order('created_at DESC')
+    @categories = Product.categories   
   end
 
   def new
@@ -30,13 +31,14 @@ class ProductsController < ApplicationController
 
   def search
     if params[:filter]
-      keyword = params[:filter].downcase
+      keyword = params[:filter]
       @products = Product.filter('category', keyword)
     else  
-      term = params[:search_term].downcase
+      term = params[:term].downcase
       @products = Product.search(term)
     end
 
+    @categories = Product.categories 
     @products = @products.paginate(page: params[:page] || 1, per_page: 50)
   end
 

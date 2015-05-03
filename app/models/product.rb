@@ -44,4 +44,12 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def self.categories 
+    categories = [ 
+      'All','Dress','Top',
+      'Skirt', 'One piece', 'Bottoms', 
+      'Jacket', 'Intimates', 'Accessories'
+    ]     
+  end
+
 end

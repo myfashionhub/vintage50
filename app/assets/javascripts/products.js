@@ -16,8 +16,12 @@ $(document).ready(function() {
   	product.enlargedView();
   });
 
-});
+  $('nav.products .filter select').on('change', function(e) {  
+  	var form = $(e.target).parent();
+  	form.submit();
+  });
 
+});
 
 var Product = function(element) {
 	this.element = element;

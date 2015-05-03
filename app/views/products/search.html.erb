@@ -4,17 +4,18 @@
   
   <% if @products.length == 0 %>
     <p>No product found.</p>
+
   <% else %>
 
-  <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
+    <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>  
 
-  <ul class='all_products'>
-    <% @products.each do |product| %>
-      <%= render partial: 'show', locals: { product: product } %>
-    <% end %>
-  </ul>
+    <ul class='all_products'>
+      <% @products.each do |product| %>
+        <%= render partial: 'show', locals: { product: product } %>
+      <% end %>
+    </ul>  
 
-  <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
+    <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
   <% end %>
 
 </div>

@@ -4,7 +4,8 @@ class InventoryController < ApplicationController
   def index
   	@products = Product.paginate(page: params[:page] || 1, per_page: 50)
                        .order('created_at DESC')
-    @actions = ['Change status','publish','delete','archive']
+    @categories = Product.categories 
+    @actions = ['Change status','Publish','Delete','Archive']
   end
 
 end
