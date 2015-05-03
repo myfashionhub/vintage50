@@ -15,6 +15,7 @@ $(document).ready(function() {
   	var product = new Product($(e.target).parent());
   	product.enlargedView();
   });
+
 });
 
 

@@ -80,3 +80,13 @@ li.product {
   }
 }
 
+/* PRODUCT VIEW DETAILS */
+
+.modal li.product {
+  width: auto;
+  margin: 0;
+  padding: 1em;
+  img {
+    height: 70vh;
+  }
+}

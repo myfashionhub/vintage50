@@ -69,7 +69,8 @@ nav.global {
 .modal {
   @include vertical-align;
   @include horizontal-align;
-  @include dimension(400px,300px);
+  min-width: 400px;
+  min-height: 300px;
   position: absolute;
   z-index: 4;
   background-color: #fff;
@@ -77,6 +78,7 @@ nav.global {
   .close {
     font-size: 1.5em;
     @include position(absolute,0,5px,auto,auto);
+    z-index: 5;
     cursor: pointer;
   }
 }
