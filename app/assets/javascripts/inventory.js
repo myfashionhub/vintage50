@@ -2,7 +2,7 @@ $(document).ready(function() {
   $('.product .actions').on('change', function(e) {  
   	var action = e.target.value; 
   	var item = new Item($(e.target).parent()); 
-  	item.changeStatus(action.toLowercase());
+  	item.changeStatus(action.toLowerCase());
   });
 
   var inventory = new Inventory();

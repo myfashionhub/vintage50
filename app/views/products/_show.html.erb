@@ -13,4 +13,9 @@
   <div class='add'>
     <span class='tooltip'>Add to closet&nbsp;</span> + 
   </div>
+
+  <% if authorized('admin') %>
+    <%= render partial: 'inventory/actions', locals: { product: product } %>
+  <% end %>
+
 </li>

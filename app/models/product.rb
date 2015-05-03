@@ -52,4 +52,7 @@ class Product < ActiveRecord::Base
     ]     
   end
 
+  def self.actions
+    actions = ['Change status','Publish','Delete','Archive']
+  end
 end

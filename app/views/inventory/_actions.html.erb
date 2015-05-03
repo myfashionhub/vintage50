@@ -1,0 +1,8 @@
+<p>Category: <%= product.category %></p>
+<p>Status: <%= product.status || 'unknown' %></p>
+ 
+<select class='actions'>
+  <% for action in @actions %>
+  <option><%= action %></option>
+  <% end %>
+</select>

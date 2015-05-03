@@ -1,5 +1,9 @@
 <%= render 'nav' %>
 
+<% if authorized('admin') %>
+  <%= render 'inventory/bulk_edit' %>
+<% end %>
+
 <div class="flash">
   <% if flash[:notice] %>
     <%= flash[:notice] %>

@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
                 .paginate(page: params[:page] || 1, per_page: 50)
                 .order('created_at DESC')
     @categories = Product.categories   
+    @actions = Product.actions
   end
 
   def new
@@ -39,6 +40,7 @@ class ProductsController < ApplicationController
     end
 
     @categories = Product.categories 
+    @actions = Product.actions
     @products = @products.paginate(page: params[:page] || 1, per_page: 50)
   end
 
