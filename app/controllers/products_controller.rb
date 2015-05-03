@@ -28,18 +28,16 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
 
-  def filter
-    keyword = params[:filter].downcase
-    if keyword == 'all'
-      redirect_to root_path
-    else
-      @products = Product.where(category: "#{keyword}")
-    end
-  end
-
   def search
-    term = params[:search_term].downcase
-    @products = Product.search(term)
+    if params[:filter]
+      keyword = params[:filter].downcase
+      @products = Product.filter('category', keyword)
+    else  
+      term = params[:search_term].downcase
+      @products = Product.search(term)
+    end
+
+    @products = @products.paginate(page: params[:page] || 1, per_page: 50)
   end
 
   def destroy

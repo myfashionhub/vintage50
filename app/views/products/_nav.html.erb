@@ -6,13 +6,13 @@
 
   <p class='hidden'>&nbsp;</p>
 
-  <%= form_tag '/products/filter', method: :post, class: 'filter' do %>
+  <%= form_tag '/products/search', method: :get, class: 'filter' do %>
+    <input type='hidden' name='attribute' value='category' />
     <%= select_tag :filter, options_for_select([
       'All','Dress','Top',
       'Skirt', 'One piece', 'Bottoms', 
       'Jacket', 'Intimates', 'Accessories'])
     %>
-    <%= submit_tag 'Filter', name: nil %>
   <% end %>
 
 </nav>

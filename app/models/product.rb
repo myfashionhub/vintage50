@@ -27,9 +27,20 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def self.filter(attribute,keyword)
+    attribute = attribute.downcase.to_sym
+    if keyword == 'all'
+      Product.all
+    else
+      Product.where(attribute => "#{keyword}")
+    end    
+  end
+
   def self.search(term)
     Product.all.select do |product|
-      product.name.downcase.include?(term) || product.brand.downcase.include?(term) || product.category.include?(term)
+      product.name.downcase.include?(term) || 
+      product.brand.downcase.include?(term) || 
+      product.category.include?(term)
     end
   end
 

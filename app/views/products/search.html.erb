@@ -1,26 +1,20 @@
 <%= render 'nav' %>
 
 <div class="container">
-
-  <ul class='all_products'>
+  
   <% if @products.length == 0 %>
     <p>No product found.</p>
   <% else %>
-  <% @products.each do |product| %>
 
-      <li>
-        <img src="<%= product.image %>" />
-        <a href="<%= product.url %>">
-        <%= product.brand %> <%= product.name %>
-        </a> | <%= product.price %>
-        <% if product.price.delete('$').to_i < 15 %>
-          <div class="steal">&nbsp; STEAL!</div>
-        <% end %>
-      </li>
+  <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
 
-  <% end %>
-  <% end %>
+  <ul class='all_products'>
+    <% @products.each do |product| %>
+      <%= render partial: 'show', locals: { product: product } %>
+    <% end %>
   </ul>
 
+  <%= will_paginate @products, previous_label: '&laquo;', next_label: '&raquo;' %>
+  <% end %>
 
 </div>
