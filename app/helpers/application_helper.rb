@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def authorized(role)
-    if current_user.role == 'admin'
+    if current_user && current_user.role == 'admin'
       true
     else 
     	false
